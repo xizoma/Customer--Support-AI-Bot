@@ -1,0 +1,42 @@
+2026-05-10 22:36:34.116996 USER: hello
+2026-05-10 22:36:34.116996 BOT: Hello! How can I help you?
+
+2026-05-10 22:36:44.938995 USER: refund
+2026-05-10 22:36:44.938995 BOT: Please share your order ID for refund.
+
+2026-05-10 22:37:24.018132 USER: complaint
+2026-05-10 22:37:24.022193 BOT: Sorry for the inconvenience. Please explain your issue.
+
+2026-05-10 22:42:21.172122 USER: hello
+2026-05-10 22:42:21.172122 BOT: Hello! How can I help you?
+
+2026-05-10 22:49:51.998392 USER: refund
+2026-05-10 22:49:51.998392 BOT: Please share your order ID for refund.
+
+2026-05-10 22:49:58.246815 USER: no
+2026-05-10 22:49:58.246815 BOT: Sorry, I didn't understand.
+
+2026-05-10 22:50:12.762550 USER: i have no order id
+2026-05-10 22:50:12.762550 BOT: Sorry, I didn't understand.
+
+2026-05-10 22:52:15.926741 USER: hello
+2026-05-10 22:52:15.926741 BOT: Hello! How can I help you?
+
+2026-05-10 22:52:21.461872 USER: hii
+2026-05-10 22:52:21.461872 BOT: Sorry, I didn't understand.
+
+2026-05-10 22:52:34.935035 USER: i want refund
+2026-05-10 22:52:34.935035 BOT: Please share your order ID for refund.
+
+2026-05-10 23:22:56.169415 USER: hello
+2026-05-10 23:22:56.169415 BOT: Hello! How can I help you?
+
+2026-05-10 23:23:07.019398 USER: i want refund
+2026-05-10 23:23:07.019398 BOT: Please share your order ID for refund.
+
+2026-05-10 23:23:19.033741 USER: 12234532
+2026-05-10 23:23:19.033741 BOT: Sorry, I didn't understand.
+
+2026-05-10 23:27:09.551222 USER: hello
+2026-05-10 23:27:09.551222 BOT: Hello! How can I help you?
+

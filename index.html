@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Support Chatbot</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <!-- Animated Background -->
+
+    <div class="background"></div>
+
+    <!-- Main Wrapper -->
+
+    <div class="chat-wrapper">
+
+        <!-- LEFT PANEL -->
+
+        <div class="left-panel">
+
+            <img
+            src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png"
+            class="robot">
+
+            <h1>AI Customer Support</h1>
+
+            <p>
+                Intelligent Multi-Channel Chatbot Platform
+            </p>
+
+            <button onclick="connectAgent()">
+                Connect Live Agent
+            </button>
+
+        </div>
+
+        <!-- RIGHT CHAT SECTION -->
+
+        <div class="chat-container">
+
+            <!-- HEADER -->
+
+            <div class="chat-header">
+
+                <div class="header-left">
+
+                    <img
+                    src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png"
+                    class="mini-bot">
+
+                    <div>
+
+                        <h2>Support Assistant</h2>
+
+                        <span class="online">
+                            ● Online
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- CHATBOX -->
+
+            <div id="chatbox"></div>
+
+            <!-- INPUT AREA -->
+
+            <div class="input-area">
+
+                <input
+                    type="text"
+                    id="userInput"
+                    placeholder="Ask something..."
+                >
+
+                <button onclick="sendMessage()">
+                    Send
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+<script>
+
+function sendMessage(){
+
+    let input = document.getElementById("userInput").value;
+
+    if(input === ""){
+        return;
+    }
+
+    let chatbox = document.getElementById("chatbox");
+
+    let time = new Date().toLocaleTimeString();
+
+    // USER MESSAGE
+
+    chatbox.innerHTML += `
+
+        <div class="user-message">
+
+            <div class="bubble user-bubble">
+                ${input}
+            </div>
+
+            <div class="time">
+                ${time}
+            </div>
+
+        </div>
+    `;
+
+    // BOT TYPING EFFECT
+
+    chatbox.innerHTML += `
+
+        <div class="bot-message" id="typing">
+
+            <div class="bubble bot-bubble">
+                Typing...
+            </div>
+
+        </div>
+    `;
+
+    chatbox.scrollTop = chatbox.scrollHeight;
+
+    // SEND TO FLASK
+
+    fetch('/get', {
+
+        method:'POST',
+
+        headers:{
+            'Content-Type':'application/x-www-form-urlencoded'
+        },
+
+        body:'msg=' + encodeURIComponent(input)
+
+    })
+
+    .then(response => response.json())
+
+    .then(data => {
+
+        document.getElementById("typing").remove();
+
+        chatbox.innerHTML += `
+
+            <div class="bot-message">
+
+                <div class="bubble bot-bubble">
+                    ${data.response}
+                </div>
+
+                <div class="time">
+                    ${data.time}
+                </div>
+
+            </div>
+        `;
+
+        chatbox.scrollTop = chatbox.scrollHeight;
+    });
+
+    document.getElementById("userInput").value = "";
+}
+
+// LIVE AGENT
+
+function connectAgent(){
+
+    let chatbox = document.getElementById("chatbox");
+
+    chatbox.innerHTML += `
+
+        <div class="bot-message">
+
+            <div class="bubble bot-bubble">
+
+                Connecting to human support executive...
+
+            </div>
+
+        </div>
+    `;
+}
+
+</script>
+
+</body>
+</html>
